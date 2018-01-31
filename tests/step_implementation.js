@@ -1,5 +1,5 @@
 /* globals gauge*/
-const { browser, openBrowser, closeBrowser, goto, screenshot } = require('taiko');
+const { browser, openBrowser, closeBrowser, goto, title } = require('taiko');
 "use strict";
 
 var assert = require("assert");
@@ -31,18 +31,16 @@ step("Almost all words have vowels <table>", function(table) {
 
 step("Go to <url>", async function(url) {
   try {
-    openBrowser;
-          await openBrowser();
-    goto;
-          await goto(url);
-          await closeBrowser();
-      } catch (e) {
-          console.error(e);
-      } finally {
-          if (browser()) {
-              closeBrowser();
-          }
-      }
+    await openBrowser();
+    await goto(url);
+    await closeBrowser();
+} catch (e) {
+    console.error(e);
+} finally {
+    if (browser()) {
+        closeBrowser();
+    }
+}
 });
 
 // ---------------
