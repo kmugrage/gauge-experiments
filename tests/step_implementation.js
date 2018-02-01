@@ -15,32 +15,32 @@ var numberOfVowels = function (word) {
 // Gauge step implementations
 // --------------------------
 
-step("Vowels in English language are <vowels>.", function(vowelsGiven) {
+step("Vowels in English language are <vowels>.", function (vowelsGiven) {
   assert.equal(vowelsGiven, vowels.join(""));
 });
 
-step("The word <word> has <number> vowels.", function(word, number) {
+step("The word <word> has <number> vowels.", function (word, number) {
   assert.equal(number, numberOfVowels(word));
 });
 
-step("Almost all words have vowels <table>", function(table) {
+step("Almost all words have vowels <table>", function (table) {
   table.rows.forEach(function (row) {
     assert.equal(numberOfVowels(row.cells[0]), parseInt(row.cells[1]));
   });
 });
 
-step("Go to <url>", async function(url) {
+step("Go to <url>", async function (url) {
   try {
     await openBrowser();
     await goto(url);
     await closeBrowser();
-} catch (e) {
+  } catch (e) {
     console.error(e);
-} finally {
+  } finally {
     if (browser()) {
-        closeBrowser();
+      closeBrowser();
     }
-}
+  }
 });
 
 // ---------------
@@ -53,4 +53,4 @@ beforeScenario(function () {
 
 beforeScenario(function () {
   assert.equal(vowels[0], "a");
-}, { tags: [ "single word" ]});
+}, { tags: ["single word"] });
